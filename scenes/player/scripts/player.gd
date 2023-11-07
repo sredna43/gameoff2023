@@ -4,8 +4,9 @@ class_name Player
 @export var player_num = 0
 
 var speed = 20
+var gravity = 12
 var friction = 0.2
-var jump_strength = 280
+var jump_strength = 300
 var terminal_velocity = 1000
 var air_resistance = 0.05
 var max_speed = 300

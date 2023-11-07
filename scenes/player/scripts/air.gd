@@ -1,7 +1,7 @@
 extends PlayerState
 
 func run(delta: float) -> String:
-	player.velocity.y += 9.8
+	player.velocity.y += player.gravity
 	if (player.is_on_floor()):
 		return "idle"
 	if (player.on_wall != 0 and input == player.on_wall and Input.is_action_just_pressed("p%d_jump" % player.player_num)):
