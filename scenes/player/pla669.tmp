@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://tkqvw65smpxn"]
+
+[ext_resource type="Texture2D" uid="uid://b75143mxb0g3o" path="res://raw_assets/player.png" id="1_h0g1v"]
+[ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_v0enf"]
+[ext_resource type="Script" path="res://resources/fsm/state_machine.gd" id="3_kwhh1"]
+[ext_resource type="Script" path="res://scenes/player/idle.gd" id="4_f5hq7"]
+[ext_resource type="Script" path="res://scenes/player/air.gd" id="5_spxj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo74y"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v0enf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lo74y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h0g1v")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_kwhh1")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_f5hq7")
+tag = "tag"
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource("5_spxj0")
