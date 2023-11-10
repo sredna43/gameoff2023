@@ -19,10 +19,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtu4b"]
-size = Vector2(76, 34)
+size = Vector2(88, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqlh"]
-size = Vector2(61, 22)
+size = Vector2(85, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j1xs"]
 size = Vector2(96, 14)
@@ -33,6 +33,7 @@ script = ExtResource("1_4vnu4")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fjkas")
+frame = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32768
@@ -47,7 +48,7 @@ collision_layer = 32769
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 37)
+position = Vector2(0.5, 38)
 shape = SubResource("RectangleShape2D_6tqlh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]

@@ -4,5 +4,9 @@ extends Node2D
 @onready var static_body = $StaticBody2D
 @onready var animation_player = $AnimationPlayer
 
+var can_disappear = true
+
 func disappear() -> void:
-	animation_player.play("disappear")
+	if (can_disappear):
+		animation_player.play("disappear")
+		can_disappear = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6t1fmlc7s4og"]
+[gd_scene load_steps=21 format=3 uid="uid://b6t1fmlc7s4og"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_v0enf"]
 [ext_resource type="Texture2D" uid="uid://b75143mxb0g3o" path="res://assets/player.png" id="2_h6g1b"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/platform.gd" id="8_mlorx"]
 [ext_resource type="Script" path="res://scenes/player/scripts/wall_jump.gd" id="9_nbart"]
 [ext_resource type="Texture2D" uid="uid://4d1s4fwjf6xl" path="res://assets/expand_icon.png" id="10_k34gq"]
+[ext_resource type="Script" path="res://scenes/player/scripts/in_goal.gd" id="10_sx5fv"]
+[ext_resource type="Script" path="res://scenes/player/scripts/dead.gd" id="11_wek0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj3nx"]
 size = Vector2(64, 64)
@@ -17,9 +19,8 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhvu0"]
 size = Vector2(128, 128)
 
-[sub_resource type="Animation" id="Animation_g5sil"]
-resource_name = "show_expand"
-length = 0.3
+[sub_resource type="Animation" id="Animation_8ph3o"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,10 +28,34 @@ tracks/0/path = NodePath("ExpandIcon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.129412)]
+"values": [Color(0, 0, 0, 0.129412)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExpandIcon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7pv5g"]
@@ -49,8 +74,9 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0.0745098), Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_8ph3o"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_g5sil"]
+resource_name = "show_expand"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,21 +84,83 @@ tracks/0/path = NodePath("ExpandIcon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.129412)]
+}
+
+[sub_resource type="Animation" id="Animation_dlgiy"]
+resource_name = "die"
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"respawn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0.129412)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0588235)]
+}
+
+[sub_resource type="Animation" id="Animation_iqsnu"]
+resource_name = "respawn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yyrxv"]
 _data = {
 "RESET": SubResource("Animation_8ph3o"),
+"die": SubResource("Animation_dlgiy"),
 "hide_expand": SubResource("Animation_7pv5g"),
+"respawn": SubResource("Animation_iqsnu"),
 "show_expand": SubResource("Animation_g5sil")
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 57345
+collision_layer = 2
+collision_mask = 40973
+platform_floor_layers = 4294901761
 script = ExtResource("1_v0enf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -80,6 +168,7 @@ texture = ExtResource("2_h6g1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rj3nx")
+disabled = true
 
 [node name="PlatformArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -89,12 +178,14 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_bhvu0")
 
 [node name="RightCollider" type="RayCast2D" parent="."]
-position = Vector2(0, 24)
-target_position = Vector2(34, 0)
+position = Vector2(0, 32)
+target_position = Vector2(36, 0)
+collision_mask = 8193
 
 [node name="LeftCollider" type="RayCast2D" parent="."]
-position = Vector2(0, 24)
-target_position = Vector2(-34, 0)
+position = Vector2(0, 32)
+target_position = Vector2(-36, 0)
+collision_mask = 8193
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_kwhh1")
@@ -122,6 +213,14 @@ tag = "platform"
 [node name="WallJump" type="Node" parent="StateMachine"]
 script = ExtResource("9_nbart")
 tag = "wall_jump"
+
+[node name="InGoal" type="Node" parent="StateMachine"]
+script = ExtResource("10_sx5fv")
+tag = "in_goal"
+
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("11_wek0l")
+tag = "dead"
 
 [node name="ExpandIcon" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.129412)

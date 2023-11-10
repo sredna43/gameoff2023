@@ -1,0 +1,33 @@
+{
+	"textures": [
+		{
+			"image": "player.png",
+			"size": {
+				"w": 64,
+				"h": 256
+			},
+			"sprites": [
+				{
+					"filename": "player.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 256
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7",
+		"format": "RGBA8888",
+	}
+}

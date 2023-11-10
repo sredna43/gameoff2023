@@ -1,0 +1,93 @@
+{
+	"textures": [
+		{
+			"image": "texture.png",
+			"size": {
+				"w": 64,
+				"h": 224
+			},
+			"sprites": [
+				{
+					"filename": "player1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "player5.png",
+					"region": {
+						"x": 0,
+						"y": 64,
+						"w": 64,
+						"h": 64
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "player2.png",
+					"region": {
+						"x": 0,
+						"y": 128,
+						"w": 64,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "player3.png",
+					"region": {
+						"x": 0,
+						"y": 176,
+						"w": 64,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "player4.png",
+					"region": {
+						"x": 0,
+						"y": 208,
+						"w": 64,
+						"h": 16
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7",
+		"format": "RGBA8888",
+	}
+}

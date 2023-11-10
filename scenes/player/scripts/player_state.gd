@@ -10,5 +10,5 @@ func _ready() -> void:
 	assert(player != null)
 	super()
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta: float) -> void:
 	input = Input.get_action_strength("p%d_right" % player.player_num) - Input.get_action_strength("p%d_left" % player.player_num)
