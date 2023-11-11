@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckl0n7ot1qvna"]
 
-[ext_resource type="Script" path="res://scenes/main/multitarget_camera.gd" id="1_mw2gx"]
+[ext_resource type="Script" path="res://scenes/utils/multitarget_camera.gd" id="1_mw2gx"]
 
 [node name="MultitargetCamera" type="Camera2D"]
 script = ExtResource("1_mw2gx")

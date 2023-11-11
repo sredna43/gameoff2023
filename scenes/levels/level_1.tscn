@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6t1fmlc7s4og" path="res://scenes/player/player.tscn" id="2_bnyb1"]
 [ext_resource type="PackedScene" uid="uid://cvqxnue1nuibu" path="res://scenes/objects/removable_platform.tscn" id="4_jd4f2"]
 [ext_resource type="PackedScene" uid="uid://ca3ykvqmarsvn" path="res://scenes/objects/button.tscn" id="5_rg6no"]
-[ext_resource type="PackedScene" uid="uid://ckl0n7ot1qvna" path="res://scenes/main/multitarget_camera.tscn" id="8_tjg5g"]
+[ext_resource type="PackedScene" uid="uid://ckl0n7ot1qvna" path="res://scenes/utils/multitarget_camera.tscn" id="8_tjg5g"]
 [ext_resource type="PackedScene" uid="uid://jqpxcgo7u3dk" path="res://scenes/objects/goal.tscn" id="8_uuqv3"]
 
 [node name="Level_1" type="Node2D"]

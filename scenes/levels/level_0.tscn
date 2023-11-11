@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/levels/level_0.gd" id="1_tus4n"]
 [ext_resource type="TileSet" uid="uid://bph8khkfunyrp" path="res://scenes/levels/tiles.tres" id="2_ok47i"]
-[ext_resource type="PackedScene" uid="uid://ckl0n7ot1qvna" path="res://scenes/main/multitarget_camera.tscn" id="3_6djc1"]
+[ext_resource type="PackedScene" uid="uid://ckl0n7ot1qvna" path="res://scenes/utils/multitarget_camera.tscn" id="3_6djc1"]
 [ext_resource type="PackedScene" uid="uid://b6t1fmlc7s4og" path="res://scenes/player/player.tscn" id="4_p3d2e"]
 [ext_resource type="PackedScene" uid="uid://jqpxcgo7u3dk" path="res://scenes/objects/goal.tscn" id="5_s1s1e"]
 [ext_resource type="PackedScene" uid="uid://bxqg0b4ysehvc" path="res://scenes/objects/DeathArea.tscn" id="6_ymyme"]
