@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://8lpd6ckiunhu"]
+[gd_scene load_steps=6 format=3 uid="uid://8lpd6ckiunhu"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_43261"]
-[ext_resource type="PackedScene" uid="uid://b5j4coe37cexb" path="res://scenes/levels/level_1.tscn" id="1_q1hjh"]
 
 [sub_resource type="Animation" id="Animation_uoe7v"]
 length = 0.001
@@ -110,13 +109,12 @@ _data = {
 [node name="Main" type="Node2D"]
 script = ExtResource("1_43261")
 
-[node name="TestLevel" parent="." instance=ExtResource("1_q1hjh")]
-metadata/_edit_vertical_guides_ = [750.0, 878.0]
-
 [node name="Blackout" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Blackout"]
 visible = false
+z_index = 4096
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
