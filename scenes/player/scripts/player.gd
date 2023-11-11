@@ -7,6 +7,7 @@ Exported variables
 @export var player_num = 0
 @export var respawn_marker: Marker2D
 
+
 """
 Gameplay variables
 """
@@ -56,8 +57,10 @@ Internal functions
 func _ready():
 	if (player_num == 1):
 		sprite.set_modulate(Globals.P1_COLOR)
+		collision_layer = 2
 	elif (player_num == 2):
 		sprite.set_modulate(Globals.P2_COLOR)
+		collision_layer = 4
 	if (respawn_marker):
 		respawn_position = respawn_marker.position
 	collision.disabled = false
@@ -75,6 +78,7 @@ func _physics_process(delta) -> void:
 	_update_velocity(delta)
 	move_and_slide()
 	_do_squash_and_stretch(delta)
+
 
 func _update_velocity(delta: float) -> void:
 	position += velocity * delta

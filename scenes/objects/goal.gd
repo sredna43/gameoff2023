@@ -2,8 +2,13 @@ extends Area2D
 
 @export var player_target: int 
 
+@onready var sprite = $Sprite2D
+
 func _ready() -> void:
-	var sprite = $Sprite2D
+	_set_color()
+	collision_mask = player_target * 2
+
+func _set_color() -> void:
 	if player_target == 1:
 		sprite.set_modulate(Globals.P1_COLOR)
 	elif player_target == 2:

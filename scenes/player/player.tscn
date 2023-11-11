@@ -144,8 +144,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 40973
+collision_layer = 0
+collision_mask = 40985
 platform_floor_layers = 4294901761
 script = ExtResource("1_v0enf")
 

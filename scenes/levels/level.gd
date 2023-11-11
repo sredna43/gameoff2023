@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _check_win_level():
 	if (player1.in_goal and player2.in_goal and not has_won):
-		print("win")
+		print("level won")
 		has_won = true
 		emit_signal("won")
 

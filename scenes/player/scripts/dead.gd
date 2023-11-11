@@ -16,7 +16,6 @@ func run(delta: float) -> String:
 func exit() -> void:
 	player.animation_player.play("respawn")
 	player.collision.disabled = false
-	player.collision_layer = 2
 	player.is_platform = false
 	player.expand_icon.visible = true
 	player.velocity.y = -player.jump_strength

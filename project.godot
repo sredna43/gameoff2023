@@ -114,9 +114,10 @@ p2_platform={
 [layer_names]
 
 2d_physics/layer_1="world_tiles"
-2d_physics/layer_2="players"
-2d_physics/layer_3="p1_platform"
-2d_physics/layer_4="p2_platform"
+2d_physics/layer_2="player1"
+2d_physics/layer_3="player2"
+2d_physics/layer_4="p1_platform"
+2d_physics/layer_5="p2_platform"
 2d_physics/layer_14="blocks"
 2d_physics/layer_15="removable_platforms"
 2d_physics/layer_16="buttons"
