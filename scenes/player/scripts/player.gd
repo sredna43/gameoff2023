@@ -13,7 +13,7 @@ Gameplay variables
 var speed = 20
 var gravity = 18
 var friction = 0.2
-var jump_strength = 420
+var jump_strength = 400
 var wall_jump_strength = 275
 var wall_jump_kick = 400
 var terminal_velocity = 1500

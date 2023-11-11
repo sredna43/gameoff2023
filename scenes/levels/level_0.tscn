@@ -23,16 +23,6 @@ position = Vector2(64, 400)
 limit_left = -256
 limit_bottom = 928
 
-[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("4_p3d2e")]
-position = Vector2(-32, 592)
-player_num = 1
-respawn_marker = NodePath("../Player1Respawn")
-
-[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("4_p3d2e")]
-position = Vector2(160, 592)
-player_num = 2
-respawn_marker = NodePath("../Player2Respawn")
-
 [node name="Player1Respawn" type="Marker2D" parent="."]
 position = Vector2(-32, 416)
 
@@ -50,3 +40,13 @@ player_target = 2
 [node name="DeathArea" parent="." instance=ExtResource("6_ymyme")]
 position = Vector2(1166, 991)
 scale = Vector2(248.16, 3.59999)
+
+[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("4_p3d2e")]
+position = Vector2(-32, 592)
+player_num = 1
+respawn_marker = NodePath("../Player1Respawn")
+
+[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("4_p3d2e")]
+position = Vector2(160, 592)
+player_num = 2
+respawn_marker = NodePath("../Player2Respawn")
