@@ -7,3 +7,6 @@ enum DEATH_BY {
 	CRUSHED,
 	FALL
 }
+
+var play_music = true
+var play_sounds = true

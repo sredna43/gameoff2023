@@ -1,40 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://8lpd6ckiunhu"]
+[gd_scene load_steps=9 format=3 uid="uid://8lpd6ckiunhu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_43261"]
+[ext_resource type="PackedScene" uid="uid://bl1qohwo88hfc" path="res://scenes/guis/main_menu.tscn" id="2_5whs0"]
+[ext_resource type="PackedScene" uid="uid://dyb46fejey8d8" path="res://scenes/guis/pause_menu.tscn" id="3_c8nk7"]
+[ext_resource type="PackedScene" uid="uid://dnmtht1dnkjq4" path="res://scenes/guis/options.tscn" id="4_dapb2"]
 
 [sub_resource type="Animation" id="Animation_uoe7v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Blackout:visible")
+tracks/0/path = NodePath("Blackout/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Blackout/ColorRect:modulate")
+tracks/1/path = NodePath("Blackout/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Blackout/ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -43,37 +34,37 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_c5h5h"]
 resource_name = "blackout_fade_in"
-length = 0.5
+length = 0.2
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Blackout:visible")
+tracks/0/path = NodePath("Blackout/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Blackout/ColorRect:modulate")
+tracks/1/path = NodePath("Blackout/ColorRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_4j1ad"]
 resource_name = "blackout_fade_out"
 length = 0.5
-step = 0.05
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,7 +84,7 @@ tracks/1/path = NodePath("Blackout/ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.45),
+"times": PackedFloat32Array(0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -107,14 +98,26 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_43261")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yeeol")
+}
+
+[node name="MainMenu" parent="." instance=ExtResource("2_5whs0")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_c8nk7")]
+visible = false
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_dapb2")]
+visible = false
 
 [node name="Blackout" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Blackout"]
 visible = false
-z_index = 4096
-z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -122,7 +125,9 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yeeol")
-}
+[connection signal="show_options" from="MainMenu" to="." method="_on_main_menu_show_options"]
+[connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
+[connection signal="quit_main_menu" from="PauseMenu" to="." method="_on_pause_menu_quit_main_menu"]
+[connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]
+[connection signal="show_options" from="PauseMenu" to="." method="_on_pause_menu_show_options"]
+[connection signal="close_options" from="OptionsMenu" to="." method="_on_options_menu_close_options"]

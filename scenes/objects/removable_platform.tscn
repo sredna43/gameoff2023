@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvqxnue1nuibu"]
 
 [ext_resource type="Script" path="res://scenes/objects/removable_platform.gd" id="1_y7sj0"]
-[ext_resource type="Texture2D" uid="uid://b7p6fumaulxll" path="res://assets/removable_platform.png" id="2_1l765"]
+[ext_resource type="Texture2D" uid="uid://b7p6fumaulxll" path="res://assets/objects/removable_platform.png" id="2_1ap1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab1rc"]
 size = Vector2(256, 32)
@@ -71,7 +71,7 @@ _data = {
 script = ExtResource("1_y7sj0")
 
 [node name="RemovablePlatform" type="Sprite2D" parent="."]
-texture = ExtResource("2_1l765")
+texture = ExtResource("2_1ap1c")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 16384

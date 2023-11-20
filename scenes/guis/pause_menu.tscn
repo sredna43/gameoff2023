@@ -1,0 +1,159 @@
+[gd_scene load_steps=15 format=3 uid="uid://dyb46fejey8d8"]
+
+[ext_resource type="Script" path="res://scenes/guis/pause_menu.gd" id="1_b3fs7"]
+[ext_resource type="Texture2D" uid="uid://bk878ng0fe03k" path="res://assets/guis/options_background.png" id="1_cfojp"]
+[ext_resource type="LabelSettings" uid="uid://b5wbsy6h22dyo" path="res://scenes/guis/heading.tres" id="2_vmebr"]
+[ext_resource type="Texture2D" uid="uid://4nv6gqnh3jef" path="res://assets/guis/options_normal.png" id="3_yf1sy"]
+[ext_resource type="Texture2D" uid="uid://dvugxyaqtgfpn" path="res://assets/guis/options_hover.png" id="4_tpbrb"]
+[ext_resource type="Texture2D" uid="uid://dguoxobncbsc4" path="res://assets/guis/main_menu_normal.png" id="5_4la67"]
+[ext_resource type="Texture2D" uid="uid://d4im88viol6iy" path="res://assets/guis/main_menu_hover.png" id="6_3xf4t"]
+[ext_resource type="Texture2D" uid="uid://bnu4a65qwfb8s" path="res://assets/guis/resume_normal.png" id="7_63em1"]
+[ext_resource type="Texture2D" uid="uid://cfexp0yvkbceq" path="res://assets/guis/resume_hover.png" id="8_gmyri"]
+[ext_resource type="Texture2D" uid="uid://b3qpef4dibhpq" path="res://assets/guis/confirm_background.png" id="10_uga4e"]
+[ext_resource type="Texture2D" uid="uid://otd5ss3iqlad" path="res://assets/guis/back_normal.png" id="11_78kwi"]
+[ext_resource type="Texture2D" uid="uid://buroqr0pth2f2" path="res://assets/guis/back_hover.png" id="12_ah5lm"]
+[ext_resource type="Texture2D" uid="uid://dnli2hit0jt3l" path="res://assets/guis/quit_normal.png" id="13_6jst0"]
+[ext_resource type="Texture2D" uid="uid://eye00nmj1jso" path="res://assets/guis/quit_hover.png" id="14_vuq02"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_b3fs7")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -450.0
+offset_right = 350.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cfojp")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 660
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 660
+theme_override_constants/margin_bottom = 160
+
+[node name="Heading" type="Label" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Game Paused"
+label_settings = ExtResource("2_vmebr")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 220
+
+[node name="Buttons" type="VBoxContainer" parent="PauseMenu/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="Resume" type="TextureButton" parent="PauseMenu/MarginContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("7_63em1")
+texture_hover = ExtResource("8_gmyri")
+texture_focused = ExtResource("8_gmyri")
+
+[node name="Options" type="TextureButton" parent="PauseMenu/MarginContainer/MarginContainer/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("3_yf1sy")
+texture_hover = ExtResource("4_tpbrb")
+texture_focused = ExtResource("4_tpbrb")
+
+[node name="MainMenu" type="TextureButton" parent="PauseMenu/MarginContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("5_4la67")
+texture_hover = ExtResource("6_3xf4t")
+texture_focused = ExtResource("6_3xf4t")
+
+[node name="Confirm" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -21.0
+offset_right = 35.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_uga4e")
+
+[node name="MarginContainer" type="MarginContainer" parent="Confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 384
+theme_override_constants/margin_bottom = 384
+
+[node name="Label" type="Label" parent="Confirm/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Are you sure?"
+label_settings = ExtResource("2_vmebr")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Confirm/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 72
+
+[node name="Back" type="TextureButton" parent="Confirm/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("11_78kwi")
+texture_hover = ExtResource("12_ah5lm")
+texture_focused = ExtResource("12_ah5lm")
+
+[node name="Quit" type="TextureButton" parent="Confirm/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_6jst0")
+texture_hover = ExtResource("14_vuq02")
+texture_focused = ExtResource("14_vuq02")
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/MarginContainer/Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/MarginContainer/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/MarginContainer/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Confirm/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Confirm/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

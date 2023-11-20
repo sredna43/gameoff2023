@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxydg1uj28ux8"]
 
 [ext_resource type="Script" path="res://scenes/objects/block.gd" id="1_nbtdf"]
-[ext_resource type="Texture2D" uid="uid://6jar8a5bdt7n" path="res://assets/block.png" id="1_pt41a"]
-[ext_resource type="PackedScene" uid="uid://bxqg0b4ysehvc" path="res://scenes/objects/DeathArea.tscn" id="3_hqin1"]
+[ext_resource type="Texture2D" uid="uid://6jar8a5bdt7n" path="res://assets/objects/block.png" id="2_8mua0"]
+[ext_resource type="PackedScene" uid="uid://bxqg0b4ysehvc" path="res://scenes/objects/death_area.tscn" id="3_hqin1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_agyws"]
 size = Vector2(128, 128)
@@ -19,7 +19,7 @@ angular_damp = 1.0
 script = ExtResource("1_nbtdf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pt41a")
+texture = ExtResource("2_8mua0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_agyws")

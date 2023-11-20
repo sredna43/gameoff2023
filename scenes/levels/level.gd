@@ -13,6 +13,7 @@ signal won
 func _ready() -> void:
 	cam.add_target(player1)
 	cam.add_target(player2)
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _check_win_level():
 	if (player1.in_goal and player2.in_goal and not has_won):
