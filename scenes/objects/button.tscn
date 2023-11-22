@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca3ykvqmarsvn"]
+[gd_scene load_steps=12 format=3 uid="uid://ca3ykvqmarsvn"]
 
-[ext_resource type="Script" path="res://scenes/objects/button.gd" id="1_4vnu4"]
+[ext_resource type="Script" path="res://scenes/objects/scripts/button.gd" id="1_4ahv1"]
 [ext_resource type="Texture2D" uid="uid://bfs0u80olqds1" path="res://assets/objects/button.png" id="2_6s1s8"]
 [ext_resource type="Texture2D" uid="uid://dichjj7g6ue7w" path="res://assets/objects/button_pressed.png" id="3_kqyaa"]
+[ext_resource type="Texture2D" uid="uid://crr688gpnia51" path="res://assets/objects/p1_button.png" id="4_bft8x"]
+[ext_resource type="Texture2D" uid="uid://5traefe6oam7" path="res://assets/objects/p1_button_pressed.png" id="5_a70h2"]
+[ext_resource type="Texture2D" uid="uid://1w5iphv6n2j3" path="res://assets/objects/p2_button.png" id="6_hivp7"]
+[ext_resource type="Texture2D" uid="uid://ctxrdnwwxpr4v" path="res://assets/objects/p2_button_pressed.png" id="7_btfhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqlh"]
 size = Vector2(85, 20)
@@ -21,6 +25,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_kqyaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bft8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a70h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hivp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_btfhw")
 }],
 "loop": true,
 "name": &"default",
@@ -29,11 +45,11 @@ animations = [{
 
 [node name="Button" type="Node2D"]
 z_index = -1
-script = ExtResource("1_4vnu4")
+script = ExtResource("1_4ahv1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 32769
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0.5, 38)
@@ -45,7 +61,7 @@ shape = SubResource("RectangleShape2D_4j1xs")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32768
-collision_mask = 14
+collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 31)

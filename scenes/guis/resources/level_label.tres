@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ckuk7jpaxnffq"]
+
+[ext_resource type="FontFile" uid="uid://cm2736hy813yx" path="res://assets/guis/MesloLGS NF Bold.ttf" id="1_aplcr"]
+
+[resource]
+font = ExtResource("1_aplcr")
+font_size = 128
+outline_size = 24
+outline_color = Color(0.572549, 0.584314, 0.627451, 1)

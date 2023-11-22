@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody2D
 class_name Player
 
@@ -56,33 +57,43 @@ Internal functions
 """
 func _ready():
 	if (player_num == 1):
-		sprite.set_modulate(Globals.P1_COLOR)
 		collision_layer = 2
+		set_collision_mask_value(6, false)
+		set_collision_mask_value(7, true)
 	elif (player_num == 2):
-		sprite.set_modulate(Globals.P2_COLOR)
 		collision_layer = 4
+		set_collision_mask_value(6, true)
+		set_collision_mask_value(7, false)
 	if (respawn_marker):
 		respawn_position = respawn_marker.position
 	collision.disabled = false
 
-func _physics_process(delta) -> void:
-	_get_wall_collision()
-	_check_is_in_goal()
-	_handle_expand_icon_visibility()
-	
-	if (respawning):
-		_do_respawn(delta)
 
-	fsm.run(delta)
-	
-	_update_velocity(delta)
-	move_and_slide()
-	_do_squash_and_stretch(delta)
+func _physics_process(delta) -> void:
+	# Sets color in editor
+	if (player_num == 1):
+		sprite.set_modulate(Globals.P1_COLOR)
+	elif (player_num == 2):
+		sprite.set_modulate(Globals.P2_COLOR)
+	if not Engine.is_editor_hint():
+		_get_wall_collision()
+		_check_is_in_goal()
+		_handle_expand_icon_visibility()
+		
+		if (respawning):
+			_do_respawn(delta)
+		
+		fsm.run(delta)
+		
+		_update_velocity(delta)
+		move_and_slide()
+		_do_squash_and_stretch(delta)
 
 
 func _update_velocity(delta: float) -> void:
 	position += velocity * delta
 	previous_velocity = velocity
+
 
 func _do_respawn(delta: float) -> void:
 	position = lerp(position, respawn_position, 10 * delta)
@@ -91,17 +102,20 @@ func _do_respawn(delta: float) -> void:
 		respawning = false
 		dead = false
 
+
 func _handle_expand_icon_visibility() -> void:
 	if (in_goal or dead):
 		expand_icon.visible = false
 	else:
 		expand_icon.visible = !is_platform
 
+
 func _check_is_in_goal() -> void:
 	if (abs(position - goal_pos) < Vector2.ONE):
 		in_goal = true
 	else:
 		in_goal = false
+
 
 func _get_wall_collision() -> void:
 	if (left_collider.is_colliding()):
@@ -110,6 +124,7 @@ func _get_wall_collision() -> void:
 		on_wall = 1
 	else:
 		on_wall = 0
+
 
 func _do_squash_and_stretch(delta: float) -> void:
 	if (going_to_goal):
@@ -129,11 +144,12 @@ func _do_squash_and_stretch(delta: float) -> void:
 	
 	sprite.scale.x = lerp(sprite.scale.x, 1.0, 1 - pow(0.01, delta))
 	sprite.scale.y = lerp(sprite.scale.y, 1.0, 1 - pow(0.01, delta))
-	
+
 
 func _on_area_2d_area_entered(_area: Area2D) -> void:
 	can_become_platform = false
 	animation_player.play("hide_expand")
+
 
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	can_become_platform = true
@@ -143,6 +159,10 @@ func _on_area_2d_area_exited(_area: Area2D) -> void:
 """
 External functions, called by other nodes
 """
+func respawn() -> void:
+		respawning = true
+
+
 func die(by: Globals.DEATH_BY) -> void:
 	if (!in_goal and !dead):
 		print("Death by: %s" % Globals.DEATH_BY.keys()[by])
@@ -151,11 +171,13 @@ func die(by: Globals.DEATH_BY) -> void:
 		await get_tree().create_timer(1.2).timeout
 		respawning = true
 
+
 func go_to_goal(_goal_pos: Vector2) -> void:
 	goal_pos = _goal_pos
 	going_to_goal = true
 	if (can_become_platform):
 		animation_player.play("hide_expand")
+
 
 func leave_goal() -> void:
 	in_goal = false

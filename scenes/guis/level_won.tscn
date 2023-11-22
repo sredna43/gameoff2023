@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://y2mi2enqrtr2"]
+
+[ext_resource type="Script" path="res://scenes/guis/scripts/level_won.gd" id="1_hubju"]
+[ext_resource type="Texture2D" uid="uid://bk878ng0fe03k" path="res://assets/guis/options_background.png" id="1_wm6ka"]
+[ext_resource type="LabelSettings" uid="uid://sssjr11h847a" path="res://scenes/guis/resources/sub_heading.tres" id="2_ie76w"]
+[ext_resource type="Texture2D" uid="uid://3hdrtr1lt1a7" path="res://assets/guis/next_level_normal.png" id="3_8hyco"]
+[ext_resource type="Texture2D" uid="uid://dfu3mwmdfrto" path="res://assets/guis/next_level_hover.png" id="4_e4pif"]
+[ext_resource type="Texture2D" uid="uid://by4rjhmu8qwx5" path="res://assets/guis/level_select_normal.png" id="5_rule6"]
+[ext_resource type="Texture2D" uid="uid://kiocaykd6mns" path="res://assets/guis/level_select_hover.png" id="6_bmdtq"]
+[ext_resource type="Texture2D" uid="uid://dguoxobncbsc4" path="res://assets/guis/main_menu_normal.png" id="7_5jatc"]
+[ext_resource type="Texture2D" uid="uid://d4im88viol6iy" path="res://assets/guis/main_menu_hover.png" id="8_aci4v"]
+
+[node name="LevelWon" type="CanvasLayer"]
+script = ExtResource("1_hubju")
+
+[node name="LevelWonMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="LevelWonMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -450.0
+offset_right = 350.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wm6ka")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelWonMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 660
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 660
+theme_override_constants/margin_bottom = 160
+
+[node name="Heading" type="Label" parent="LevelWonMenu/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Level Won!"
+label_settings = ExtResource("2_ie76w")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelWonMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 220
+
+[node name="Buttons" type="VBoxContainer" parent="LevelWonMenu/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+
+[node name="NextLevel" type="TextureButton" parent="LevelWonMenu/MarginContainer/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("3_8hyco")
+texture_hover = ExtResource("4_e4pif")
+texture_focused = ExtResource("4_e4pif")
+
+[node name="LevelSelect" type="TextureButton" parent="LevelWonMenu/MarginContainer/MarginContainer/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("5_rule6")
+texture_hover = ExtResource("6_bmdtq")
+texture_focused = ExtResource("6_bmdtq")
+
+[node name="MainMenu" type="TextureButton" parent="LevelWonMenu/MarginContainer/MarginContainer/Buttons"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("7_5jatc")
+texture_hover = ExtResource("8_aci4v")
+texture_focused = ExtResource("8_aci4v")
+
+[connection signal="pressed" from="LevelWonMenu/MarginContainer/MarginContainer/Buttons/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="LevelWonMenu/MarginContainer/MarginContainer/Buttons/LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="LevelWonMenu/MarginContainer/MarginContainer/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvqxnue1nuibu"]
 
-[ext_resource type="Script" path="res://scenes/objects/removable_platform.gd" id="1_y7sj0"]
+[ext_resource type="Script" path="res://scenes/objects/scripts/removable_platform.gd" id="1_fwlu1"]
 [ext_resource type="Texture2D" uid="uid://b7p6fumaulxll" path="res://assets/objects/removable_platform.png" id="2_1ap1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ab1rc"]
@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RemovablePlatform:modulate")
+tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,7 +39,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RemovablePlatform:modulate")
+tracks/0/path = NodePath("Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,10 +67,10 @@ _data = {
 "disappear": SubResource("Animation_u8taa")
 }
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_y7sj0")
+[node name="RemovablePlatform" type="Node2D"]
+script = ExtResource("1_fwlu1")
 
-[node name="RemovablePlatform" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_1ap1c")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
