@@ -46,7 +46,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/h_separation = 64
 theme_override_constants/v_separation = 64
-columns = 5
+columns = 6
 
 [node name="BackButton" type="TextureButton" parent="LevelSelect/MarginContainer"]
 layout_mode = 2

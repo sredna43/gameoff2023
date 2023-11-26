@@ -5,7 +5,9 @@ const levels: Dictionary = {
 	"2": "res://scenes/levels/level_2.tscn",
 	"3": "res://scenes/levels/level_3.tscn",
 	"4": "res://scenes/levels/level_4.tscn",
-	"5": "res://scenes/levels/level_5.tscn"
+	"5": "res://scenes/levels/level_5.tscn",
+	"6": "res://scenes/levels/level_6.tscn",
+	"7": "res://scenes/levels/level_7.tscn"
 }
 
 @onready var animation_player = $AnimationPlayer
@@ -31,6 +33,8 @@ var playing_level = false
 
 
 func _ready() -> void:
+	if (OS.is_debug_build()):
+		unlocked_levels = ["1", "2", "3", "4", "5", "6", "7"]
 	_setup_selectable_levels()
 
 

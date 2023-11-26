@@ -5,7 +5,8 @@ const P2_COLOR = Color("dc3b3d")
 
 enum DEATH_BY {
 	CRUSHED,
-	FALL
+	FALL,
+	RESTART
 }
 
 var play_music = true

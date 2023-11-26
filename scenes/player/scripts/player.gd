@@ -37,6 +37,7 @@ var dead = false
 var respawning = false
 var just_hit_ground = false
 var previous_velocity: Vector2
+var on_moving_platform = false
 
 
 """
@@ -75,6 +76,7 @@ func _physics_process(delta) -> void:
 		sprite.set_modulate(Globals.P1_COLOR)
 	elif (player_num == 2):
 		sprite.set_modulate(Globals.P2_COLOR)
+	
 	if not Engine.is_editor_hint():
 		_get_wall_collision()
 		_check_is_in_goal()
@@ -91,6 +93,8 @@ func _physics_process(delta) -> void:
 
 
 func _update_velocity(delta: float) -> void:
+	if (on_moving_platform and fsm.current_state.tag in ["air"]):
+		velocity.x = 0
 	position += velocity * delta
 	previous_velocity = velocity
 
@@ -98,9 +102,10 @@ func _update_velocity(delta: float) -> void:
 func _do_respawn(delta: float) -> void:
 	position = lerp(position, respawn_position, 10 * delta)
 	velocity = Vector2.ZERO
-	if (position.distance_to(respawn_position) < 3.5):
+	if (position.distance_to(respawn_position) < 10):
 		respawning = false
 		dead = false
+		collision.disabled = false
 
 
 func _handle_expand_icon_visibility() -> void:
@@ -184,3 +189,11 @@ func leave_goal() -> void:
 	going_to_goal = false
 	if (can_become_platform):
 		animation_player.play("show_expand")
+
+
+func _on_floor_area_body_entered(_body: Node2D) -> void:
+	on_moving_platform = true
+
+
+func _on_floor_area_body_exited(_body: Node2D) -> void:
+	on_moving_platform = false

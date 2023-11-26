@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6t1fmlc7s4og"]
+[gd_scene load_steps=22 format=3 uid="uid://b6t1fmlc7s4og"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_v0enf"]
 [ext_resource type="Texture2D" uid="uid://b75143mxb0g3o" path="res://assets/player/player.png" id="2_m3ikt"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/wall_jump.gd" id="9_nbart"]
 [ext_resource type="Script" path="res://scenes/player/scripts/in_goal.gd" id="10_sx5fv"]
 [ext_resource type="Script" path="res://scenes/player/scripts/dead.gd" id="11_wek0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63cog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj3nx"]
 size = Vector2(64, 64)
@@ -149,6 +151,15 @@ collision_mask = 40985
 platform_floor_layers = 4294901761
 script = ExtResource("1_v0enf")
 
+[node name="FloorDetector" type="Area2D" parent="."]
+position = Vector2(0, 24)
+scale = Vector2(2.6, 1.56)
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
+shape = SubResource("RectangleShape2D_63cog")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rj3nx")
 
@@ -216,5 +227,7 @@ texture = ExtResource("2_m3ikt")
 modulate = Color(0, 0, 0, 0.129412)
 texture = ExtResource("3_lglxh")
 
+[connection signal="body_entered" from="FloorDetector" to="." method="_on_floor_area_body_entered"]
+[connection signal="body_exited" from="FloorDetector" to="." method="_on_floor_area_body_exited"]
 [connection signal="area_entered" from="PlatformArea" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="PlatformArea" to="." method="_on_area_2d_area_exited"]

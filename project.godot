@@ -183,6 +183,7 @@ pause={
 2d_physics/layer_5="p2_platform"
 2d_physics/layer_6="p1_gate"
 2d_physics/layer_7="p2_gate"
+2d_physics/layer_13="movable_platforms"
 2d_physics/layer_14="blocks"
 2d_physics/layer_15="removable_platforms"
 2d_physics/layer_16="buttons"

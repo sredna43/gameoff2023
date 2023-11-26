@@ -13,6 +13,33 @@ size = Vector2(200.006, 24.2424)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbnqa"]
 size = Vector2(17.1429, 13.3333)
 
+[sub_resource type="Animation" id="Animation_4tb3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gate/StaticBody2D:collision_layer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_7e352"]
 resource_name = "disappear"
 length = 0.5
@@ -41,33 +68,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4tb3u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gate/StaticBody2D:collision_layer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Gate:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3867o"]
 _data = {
 "RESET": SubResource("Animation_4tb3u"),
@@ -88,7 +88,6 @@ collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Emitter1/StaticBody2D"]
 position = Vector2(-0.00012207, -5.41861e-07)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jf64y")
 
 [node name="Emitter2" type="Sprite2D" parent="."]
@@ -101,7 +100,6 @@ scale = Vector2(0.0799975, 1.32)
 collision_mask = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Emitter2/StaticBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1tvgx")
 
 [node name="Gate" type="Sprite2D" parent="."]

@@ -10,3 +10,8 @@ func disappear() -> void:
 	if (can_disappear):
 		animation_player.play("disappear")
 		can_disappear = false
+
+
+func reset() -> void:
+	animation_player.play("RESET")
+	can_disappear = true

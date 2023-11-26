@@ -14,6 +14,7 @@ const SPRITE_LENGTH = 192
 
 
 func _ready() -> void:
+	gate.show()
 	static_body.collision_mask = player_target * 2
 	if (player_target == 1):
 		static_body.set_collision_layer_value(6, true)
@@ -33,3 +34,14 @@ func _process(_delta: float) -> void:
 
 func disappear() -> void:
 	animation_player.play("disappear")
+	await animation_player.animation_finished
+	gate.hide()
+
+
+func reset() -> void:
+	gate.show()
+	static_body.collision_mask = player_target * 2
+	if (player_target == 1):
+		static_body.set_collision_layer_value(6, true)
+	if (player_target == 2):
+		static_body.set_collision_layer_value(7, true)

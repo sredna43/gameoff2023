@@ -11,7 +11,7 @@
 
 [node name="Level_5" type="Node2D"]
 script = ExtResource("1_itjv5")
-next_level = "1"
+next_level = "6"
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_lhr6b")
@@ -27,20 +27,6 @@ position = Vector2(88, 72)
 
 [node name="Player2Spawn" type="Marker2D" parent="."]
 position = Vector2(296, 72)
-
-[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_4rbsm")]
-position = Vector2(88, 168)
-collision_layer = 2
-collision_mask = 41945
-player_num = 1
-respawn_marker = NodePath("../Player1Spawn")
-
-[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_4rbsm")]
-position = Vector2(296, 168)
-collision_layer = 4
-collision_mask = 41145
-player_num = 2
-respawn_marker = NodePath("../Player2Spawn")
 
 [node name="DeathArea" parent="." instance=ExtResource("5_8k3io")]
 position = Vector2(-912, 1080)
@@ -77,3 +63,17 @@ player_target = 2
 [node name="DeathArea2" parent="." instance=ExtResource("5_8k3io")]
 position = Vector2(2128, 1448)
 scale = Vector2(102.36, 5.48)
+
+[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_4rbsm")]
+position = Vector2(88, 168)
+collision_layer = 2
+collision_mask = 41945
+player_num = 1
+respawn_marker = NodePath("../Player1Spawn")
+
+[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_4rbsm")]
+position = Vector2(296, 168)
+collision_layer = 4
+collision_mask = 41145
+player_num = 2
+respawn_marker = NodePath("../Player2Spawn")

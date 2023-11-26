@@ -33,10 +33,10 @@ func _process(_delta: float) -> void:
 			if (on_button > 0 and not buttons[on_button - 1].disabled):
 				on_button -= 1
 		if (Input.is_action_just_pressed("ui_up")):
-			if (on_button > button_container.columns or on_button == buttons.size() - 1 and not buttons[clamp(on_button - button_container.columns, 0, buttons.size() - 1)].disabled):
+			if (on_button > button_container.columns - 1 and not buttons[clamp(on_button - button_container.columns, 0, buttons.size() - 1)].disabled):
 				on_button = clamp(on_button - button_container.columns, 0, buttons.size() - 1)
 		if (Input.is_action_just_pressed("ui_down") and not buttons[clamp(on_button + button_container.columns, 0, buttons.size() - 1)].disabled):
-			if (on_button < button_container.columns):
+			if (on_button < button_container.columns - 1):
 				on_button = clamp(on_button + button_container.columns, 0, buttons.size() - 1)
 		if (Input.is_action_just_pressed("ui_text_backspace")):
 			_on_back_button_pressed()
