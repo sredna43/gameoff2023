@@ -34,12 +34,12 @@ func _process(_delta: float) -> void:
 				on_button -= 1
 		if (Input.is_action_just_pressed("ui_up")):
 			if (on_button == buttons.size() - 1):
-				on_button -= 1
-			elif (on_button > button_container.columns - 1):
 				if (not buttons[clamp(on_button - button_container.columns, 0, buttons.size() - 1)].disabled):
-					on_button = clamp(on_button - button_container.columns, 0, buttons.size() - 1)
+					on_button -= 1
 				else:
 					on_button = 0
+			elif (on_button > button_container.columns - 1 and not buttons[clamp(on_button - button_container.columns, 0, buttons.size() - 1)].disabled):
+				on_button = clamp(on_button - button_container.columns, 0, buttons.size() - 1)
 		if (Input.is_action_just_pressed("ui_down")):
 			if (not buttons[clamp(on_button + button_container.columns, 0, buttons.size() - 1)].disabled):
 				if (on_button == buttons.size() - 2):
