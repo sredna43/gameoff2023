@@ -72,7 +72,7 @@ func _change_scene() -> void:
 	var level_scene = ResourceLoader.load_threaded_get(load_path)
 	next_level = level_scene.instantiate()
 	add_child(next_level)
-	if (current_level):
+	if (current_level and is_instance_valid(current_level)):
 		current_level.queue_free()
 	current_level = next_level
 	current_level.connect("won", _level_won)
@@ -131,6 +131,7 @@ func _on_pause_menu_quit_main_menu() -> void:
 	main_menu.show()
 	main_menu.on_screen = main_menu.screens.MAIN_MENU
 	current_level.hide()
+	current_level.queue_free()
 	pause_menu.hide()
 	playing_level = false
 	base_ui = UI.MAIN
