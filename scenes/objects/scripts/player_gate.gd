@@ -22,17 +22,20 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if (player_target == 1):
 		gate.modulate = Globals.P1_COLOR
-		if (visible):
+		if (gate.visible):
 			static_body.set_collision_layer_value(6, true)
 			static_body.set_collision_layer_value(7, false)
 	if (player_target == 2):
 		gate.modulate = Globals.P2_COLOR
-		if (visible):
+		if (gate.visible):
 			static_body.set_collision_layer_value(6, false)
 			static_body.set_collision_layer_value(7, true)
 	emitter1.position.x = -(gate_length - 32) / 2 - 8
 	emitter2.position.x = (gate_length - 32) / 2 + 8
 	gate.scale.x = (gate_length - 32) / SPRITE_LENGTH
+	if (!gate.visible):
+		static_body.set_collision_layer_value(6, false)
+		static_body.set_collision_layer_value(7, false)
 
 
 func disappear() -> void:
