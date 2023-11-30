@@ -2,19 +2,18 @@ extends CanvasLayer
 
 signal start_game
 signal show_options
+signal show_controls
 
 @onready var main = $Main
-@onready var controls = $Controls
 
 @onready var play_button: TextureButton = $Main/TitleAndButtons/CenterContainer/Buttons/StartContainer/Play
 @onready var controls_button: TextureButton = $Main/TitleAndButtons/CenterContainer/Buttons/ControlsContainer/Controls
 @onready var options_button: TextureButton = $Main/TitleAndButtons/CenterContainer/Buttons/OptionsContainer/Options
-@onready var controls_back_button: TextureButton = $Controls/BackButtonContainer/BackButton
 
 @onready var buttons = [play_button, controls_button, options_button]
 var on_button = 0
 
-enum screens {MAIN_MENU, CONTROLS_SCREEN, OTHER}
+enum screens {MAIN_MENU, OTHER}
 var on_screen = screens.MAIN_MENU
 
 
@@ -44,10 +43,6 @@ func _process(_delta: float) -> void:
 			else:
 				on_button = 0
 		buttons[on_button].grab_focus()
-	if (on_screen == screens.CONTROLS_SCREEN):
-		controls_back_button.grab_focus()
-		if (Input.is_action_just_pressed("ui_text_backspace")):
-			_on_controls_back_button_pressed()
 
 
 func _on_start_pressed() -> void:
@@ -61,15 +56,5 @@ func _on_options_pressed() -> void:
 
 
 func _on_controls_pressed() -> void:
-	on_screen = screens.CONTROLS_SCREEN
-	main.hide()
-	controls.show()
-	controls_back_button.grab_focus()
-
-
-func _on_controls_back_button_pressed() -> void:
-	on_screen = screens.MAIN_MENU
-	controls.hide()
-	main.show()
-	play_button.grab_focus()
-	on_button = 0
+	on_screen = screens.OTHER
+	emit_signal("show_controls")

@@ -41,6 +41,9 @@ position = Vector2(1440, 736)
 collision_mask = 4
 player_target = 2
 
+[node name="Block" parent="." instance=ExtResource("8_adsvi")]
+position = Vector2(608, 304)
+
 [node name="Player1Spawn" type="Marker2D" parent="."]
 position = Vector2(160, 608)
 
@@ -60,8 +63,5 @@ collision_layer = 4
 collision_mask = 41017
 player_num = 2
 respawn_marker = NodePath("../Player2Spawn")
-
-[node name="Block" parent="." instance=ExtResource("8_adsvi")]
-position = Vector2(608, 304)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

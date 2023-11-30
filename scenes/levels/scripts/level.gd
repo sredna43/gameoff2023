@@ -3,7 +3,7 @@ class_name Level
 
 signal won
 
-@export var next_level: String = "1"
+@export var next_level: String = "-1"
 
 @onready var player1: Player = $Player1
 @onready var player2: Player = $Player2
@@ -31,6 +31,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func restart() -> void:
+	for child in get_children():
+		if (child.has_method("reset")):
+			child.reset()
 	player1.collision.disabled = true
 	player2.collision.disabled = true
 	player1.respawn()

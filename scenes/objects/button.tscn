@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca3ykvqmarsvn"]
+[gd_scene load_steps=13 format=3 uid="uid://ca3ykvqmarsvn"]
 
 [ext_resource type="Script" path="res://scenes/objects/scripts/button.gd" id="1_4ahv1"]
 [ext_resource type="Texture2D" uid="uid://bfs0u80olqds1" path="res://assets/objects/button.png" id="2_6s1s8"]
@@ -8,14 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://1w5iphv6n2j3" path="res://assets/objects/p2_button.png" id="6_hivp7"]
 [ext_resource type="Texture2D" uid="uid://ctxrdnwwxpr4v" path="res://assets/objects/p2_button_pressed.png" id="7_btfhw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtu4b"]
+size = Vector2(88, 36)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tqlh"]
 size = Vector2(85, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlf5s"]
+size = Vector2(88, 34)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j1xs"]
 size = Vector2(96, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtu4b"]
-size = Vector2(88, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjkas"]
 animations = [{
@@ -47,25 +50,30 @@ animations = [{
 z_index = -1
 script = ExtResource("1_4ahv1")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 32769
-collision_mask = 30
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0.5, 38)
-shape = SubResource("RectangleShape2D_6tqlh")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 41)
-shape = SubResource("RectangleShape2D_4j1xs")
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32768
 collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 31)
+position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_gtu4b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32769
+collision_mask = 30
+
+[node name="Pressed" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 38)
+shape = SubResource("RectangleShape2D_6tqlh")
+
+[node name="Released" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_xlf5s")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 41)
+shape = SubResource("RectangleShape2D_4j1xs")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fjkas")

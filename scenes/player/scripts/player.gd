@@ -18,7 +18,7 @@ var friction = 0.2
 var jump_strength = 400
 var wall_jump_strength = 275
 var wall_jump_kick = 400
-var terminal_velocity = 1500
+var terminal_velocity = 1000
 var air_resistance = 0.05
 var max_speed = 300
 var respawn_position: Vector2 = Vector2.ZERO
@@ -84,6 +84,9 @@ func _physics_process(delta) -> void:
 		
 		if (respawning):
 			_do_respawn(delta)
+		else:
+			show()
+			sprite.self_modulate = Color(1, 1, 1, 1)
 		
 		fsm.run(delta)
 		
@@ -93,8 +96,6 @@ func _physics_process(delta) -> void:
 
 
 func _update_velocity(delta: float) -> void:
-	if (on_moving_platform and fsm.current_state.tag in ["air"]):
-		velocity.x = 0
 	position += velocity * delta
 	previous_velocity = velocity
 
@@ -103,6 +104,7 @@ func _do_respawn(delta: float) -> void:
 	position = lerp(position, respawn_position, 10 * delta)
 	velocity = Vector2.ZERO
 	if (position.distance_to(respawn_position) < 10):
+		is_platform = false
 		respawning = false
 		dead = false
 		collision.disabled = false
@@ -137,10 +139,10 @@ func _do_squash_and_stretch(delta: float) -> void:
 		return
 	if (is_platform):
 		return
-	if (not in_goal):
+	if (not in_goal and not on_wall):
 		if (not is_on_floor()):
 			just_hit_ground = false
-			sprite.scale.y = remap(abs(velocity.y), 0, abs(jump_strength), 0.85, 1.15)
+			sprite.scale.y = remap(abs(velocity.y), 0, abs(jump_strength), 0.90, 1.10)
 			sprite.scale.x = remap(abs(velocity.y), 0, abs(jump_strength), 1.15, 0.85)
 		
 		if (not just_hit_ground and is_on_floor()):
@@ -174,6 +176,7 @@ func die(by: Globals.DEATH_BY) -> void:
 		dead = true
 		animation_player.play("die")
 		await get_tree().create_timer(1.2).timeout
+		hide()
 		respawning = true
 
 

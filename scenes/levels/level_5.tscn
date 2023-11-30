@@ -22,12 +22,6 @@ layer_0/tile_data = PackedInt32Array(262153, 131073, 2, 196617, 131073, 0, 26215
 limit_left = -1400
 limit_bottom = 1344
 
-[node name="Player1Spawn" type="Marker2D" parent="."]
-position = Vector2(88, 72)
-
-[node name="Player2Spawn" type="Marker2D" parent="."]
-position = Vector2(296, 72)
-
 [node name="DeathArea" parent="." instance=ExtResource("5_8k3io")]
 position = Vector2(-912, 1080)
 scale = Vector2(239.32, 3.2)
@@ -63,6 +57,12 @@ player_target = 2
 [node name="DeathArea2" parent="." instance=ExtResource("5_8k3io")]
 position = Vector2(2128, 1448)
 scale = Vector2(102.36, 5.48)
+
+[node name="Player1Spawn" type="Marker2D" parent="."]
+position = Vector2(88, 72)
+
+[node name="Player2Spawn" type="Marker2D" parent="."]
+position = Vector2(296, 72)
 
 [node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_4rbsm")]
 position = Vector2(88, 168)

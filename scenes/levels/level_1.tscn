@@ -24,12 +24,6 @@ limit_left = -256
 limit_right = 2816
 limit_bottom = 928
 
-[node name="Player1Respawn" type="Marker2D" parent="."]
-position = Vector2(-32, 416)
-
-[node name="Player2Respawn" type="Marker2D" parent="."]
-position = Vector2(160, 416)
-
 [node name="Player1Goal" parent="." instance=ExtResource("8_uuqv3")]
 position = Vector2(2272, 608)
 collision_mask = 2
@@ -41,8 +35,14 @@ collision_mask = 4
 player_target = 2
 
 [node name="DeathArea" parent="." instance=ExtResource("5_5xxhl")]
-position = Vector2(1166, 991)
-scale = Vector2(248.16, 3.59999)
+position = Vector2(976, 991)
+scale = Vector2(57.6, 3.59999)
+
+[node name="Player1Respawn" type="Marker2D" parent="."]
+position = Vector2(-32, 416)
+
+[node name="Player2Respawn" type="Marker2D" parent="."]
+position = Vector2(160, 416)
 
 [node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("2_bnyb1")]
 position = Vector2(-32, 592)

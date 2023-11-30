@@ -3,6 +3,7 @@ extends CanvasLayer
 signal resume
 signal restart
 signal show_options
+signal show_controls
 signal quit_main_menu
 
 @onready var pause_menu = $PauseMenu
@@ -11,6 +12,7 @@ signal quit_main_menu
 @onready var resume_button = $PauseMenu/MarginContainer/Buttons/Resume
 @onready var restart_button = $PauseMenu/MarginContainer/Buttons/Restart
 @onready var options_button = $PauseMenu/MarginContainer/Buttons/Options
+@onready var controls_button = $PauseMenu/MarginContainer/Buttons/Controls
 @onready var main_menu_button = $PauseMenu/MarginContainer/Buttons/MainMenu
 
 @onready var back_button = $Confirm/MarginContainer/HBoxContainer/Back
@@ -26,7 +28,7 @@ var on_screen = screens.MAIN
 func _process(_delta: float) -> void:
 	if (visible):
 		if (on_screen == screens.MAIN):
-			buttons = [resume_button, restart_button, options_button, main_menu_button]
+			buttons = [resume_button, restart_button, options_button, controls_button, main_menu_button]
 		elif (on_screen == screens.CONFIRM):
 			buttons = [back_button, quit_button]
 			while on_button > buttons.size() - 1:
@@ -53,6 +55,14 @@ func _process(_delta: float) -> void:
 				else:
 					on_button = 0
 			buttons[on_button].grab_focus()
+		if (Input.is_action_just_pressed("ui_text_backspace")):
+			if (on_screen == screens.MAIN):
+				emit_signal("resume")
+			elif (on_screen == screens.CONFIRM):
+				pause_menu.modulate = Color(1, 1, 1, 1)
+				confirm_menu.hide()
+			on_screen = screens.MAIN
+			
 
 
 func _on_resume_pressed() -> void:
@@ -88,3 +98,8 @@ func _on_quit_pressed() -> void:
 	confirm_menu.hide()
 	on_screen = screens.MAIN
 
+
+
+func _on_controls_pressed() -> void:
+	emit_signal("show_controls")
+	on_screen = screens.OTHER

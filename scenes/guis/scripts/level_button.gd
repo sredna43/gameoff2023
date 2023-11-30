@@ -4,7 +4,7 @@ class_name LevelButton
 signal level_selected(level_number)
 
 @onready var label = $Label
-@onready var locked = $Locked
+@onready var locked = $MarginContainer/Locked
 
 @export var level_number = ""
 

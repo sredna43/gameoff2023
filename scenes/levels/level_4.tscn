@@ -25,26 +25,6 @@ limit_top = -640
 limit_right = 2300
 limit_bottom = 1408
 
-[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_q0tc0")]
-position = Vector2(1824, 856)
-collision_layer = 2
-collision_mask = 41177
-player_num = 1
-respawn_marker = NodePath("../Player1Spawn")
-
-[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_q0tc0")]
-position = Vector2(1664, 856)
-collision_layer = 4
-collision_mask = 41017
-player_num = 2
-respawn_marker = NodePath("../Player2Spawn")
-
-[node name="Player1Spawn" type="Marker2D" parent="."]
-position = Vector2(1824, 696)
-
-[node name="Player2Spawn" type="Marker2D" parent="."]
-position = Vector2(1664, 696)
-
 [node name="RemovablePlatform" parent="." instance=ExtResource("5_7sso3")]
 position = Vector2(816, 592)
 
@@ -75,6 +55,26 @@ player_target = 1
 position = Vector2(16, 864)
 collision_mask = 4
 player_target = 2
+
+[node name="Player1Spawn" type="Marker2D" parent="."]
+position = Vector2(1824, 696)
+
+[node name="Player2Spawn" type="Marker2D" parent="."]
+position = Vector2(1664, 696)
+
+[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_q0tc0")]
+position = Vector2(1824, 856)
+collision_layer = 2
+collision_mask = 41177
+player_num = 1
+respawn_marker = NodePath("../Player1Spawn")
+
+[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("3_q0tc0")]
+position = Vector2(1664, 856)
+collision_layer = 4
+collision_mask = 41017
+player_num = 2
+respawn_marker = NodePath("../Player2Spawn")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

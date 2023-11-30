@@ -20,11 +20,3 @@ func _on_p_1_button_2_pressed() -> void:
 
 func _on_p_2_button_2_pressed() -> void:
 	p2gate2.disappear()
-
-
-func restart() -> void:
-	p1gate1.reset()
-	p1gate2.reset()
-	p2gate1.reset()
-	p2gate2.reset()
-	super()

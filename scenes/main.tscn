@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://8lpd6ckiunhu"]
+[gd_scene load_steps=12 format=3 uid="uid://8lpd6ckiunhu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_43261"]
 [ext_resource type="PackedScene" uid="uid://bl1qohwo88hfc" path="res://scenes/guis/main_menu.tscn" id="2_5whs0"]
 [ext_resource type="PackedScene" uid="uid://dyb46fejey8d8" path="res://scenes/guis/pause_menu.tscn" id="3_c8nk7"]
+[ext_resource type="PackedScene" uid="uid://crrhs77oarm37" path="res://scenes/guis/controls.tscn" id="3_kplvs"]
 [ext_resource type="PackedScene" uid="uid://dnmtht1dnkjq4" path="res://scenes/guis/options.tscn" id="4_dapb2"]
 [ext_resource type="PackedScene" uid="uid://camr2edmarv8v" path="res://scenes/guis/level_select.tscn" id="5_lciho"]
 [ext_resource type="PackedScene" uid="uid://y2mi2enqrtr2" path="res://scenes/guis/level_won.tscn" id="6_6agyl"]
@@ -113,13 +114,16 @@ libraries = {
 [node name="PauseMenu" parent="." instance=ExtResource("3_c8nk7")]
 visible = false
 
-[node name="OptionsMenu" parent="." instance=ExtResource("4_dapb2")]
-visible = false
-
 [node name="LevelWon" parent="." instance=ExtResource("6_6agyl")]
 visible = false
 
 [node name="LevelSelect" parent="." instance=ExtResource("5_lciho")]
+visible = false
+
+[node name="OptionsMenu" parent="." instance=ExtResource("4_dapb2")]
+visible = false
+
+[node name="ControlsScreen" parent="." instance=ExtResource("3_kplvs")]
 visible = false
 
 [node name="Blackout" type="CanvasLayer" parent="."]
@@ -133,15 +137,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[connection signal="show_controls" from="MainMenu" to="." method="_on_main_menu_show_controls"]
 [connection signal="show_options" from="MainMenu" to="." method="_on_main_menu_show_options"]
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="quit_main_menu" from="PauseMenu" to="." method="_on_pause_menu_quit_main_menu"]
 [connection signal="restart" from="PauseMenu" to="." method="_on_pause_menu_restart"]
 [connection signal="resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]
+[connection signal="show_controls" from="PauseMenu" to="." method="_on_pause_menu_show_controls"]
 [connection signal="show_options" from="PauseMenu" to="." method="_on_pause_menu_show_options"]
-[connection signal="close_options" from="OptionsMenu" to="." method="_on_options_menu_close_options"]
 [connection signal="level_select" from="LevelWon" to="." method="_on_level_won_level_select"]
 [connection signal="main_menu" from="LevelWon" to="." method="_on_level_won_main_menu"]
 [connection signal="next_level" from="LevelWon" to="." method="_on_level_won_next_level"]
 [connection signal="back_pressed" from="LevelSelect" to="." method="_on_level_select_back_pressed"]
 [connection signal="level_selected" from="LevelSelect" to="." method="_on_level_select_level_selected"]
+[connection signal="close_options" from="OptionsMenu" to="." method="_on_options_menu_close_options"]
+[connection signal="back_button_pressed" from="ControlsScreen" to="." method="_on_controls_screen_back_button_pressed"]

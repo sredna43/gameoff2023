@@ -5,6 +5,8 @@ extends AnimatableBody2D
 @export var duration = 5.0
 
 func _ready():
+	assert(not from == null, "Assign Marker2D to 'From'")
+	assert(not to == null, "Assign Marker2D to 'To'")
 	start_tween()
 
 func start_tween():

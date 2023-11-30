@@ -1,0 +1,329 @@
+[gd_scene load_steps=27 format=3 uid="uid://crrhs77oarm37"]
+
+[ext_resource type="Texture2D" uid="uid://dhhvjvxsnna2p" path="res://assets/guis/controls_page.png" id="1_ig288"]
+[ext_resource type="Script" path="res://scenes/guis/scripts/controls.gd" id="1_ubnx3"]
+[ext_resource type="LabelSettings" uid="uid://b5wbsy6h22dyo" path="res://scenes/guis/resources/heading.tres" id="2_x7317"]
+[ext_resource type="LabelSettings" uid="uid://sssjr11h847a" path="res://scenes/guis/resources/sub_heading.tres" id="3_rkc60"]
+[ext_resource type="LabelSettings" uid="uid://cv8k45k1mjna6" path="res://scenes/guis/resources/default_label.tres" id="4_xh7ex"]
+[ext_resource type="Texture2D" uid="uid://b77dw27ylolil" path="res://assets/guis/a_key.png" id="5_5sw5x"]
+[ext_resource type="Texture2D" uid="uid://crjflngfh2sj5" path="res://assets/guis/d_key.png" id="6_v6l2i"]
+[ext_resource type="Texture2D" uid="uid://b71natdpbhml7" path="res://assets/guis/l_arrow_key.png" id="7_2xrqo"]
+[ext_resource type="Texture2D" uid="uid://cginh6ljlur4h" path="res://assets/guis/r_arrow_key.png" id="8_muc0a"]
+[ext_resource type="Texture2D" uid="uid://bqiity1sojv23" path="res://assets/guis/l_stick_l.png" id="9_8prqn"]
+[ext_resource type="Texture2D" uid="uid://dwahoqo15tmyh" path="res://assets/guis/l_stick_r.png" id="10_n7nmf"]
+[ext_resource type="Texture2D" uid="uid://c060cl78cmonx" path="res://assets/guis/d_pad_l.png" id="11_vkmn6"]
+[ext_resource type="Texture2D" uid="uid://dhuftsygbcfol" path="res://assets/guis/d_pad_r.png" id="12_uxk3q"]
+[ext_resource type="Texture2D" uid="uid://bwhsp8xxk8wwn" path="res://assets/guis/w_key.png" id="13_dlp4f"]
+[ext_resource type="Texture2D" uid="uid://ceme4frjqovr6" path="res://assets/guis/space_l.png" id="14_iqaeq"]
+[ext_resource type="Texture2D" uid="uid://uxxxthqwpl8f" path="res://assets/guis/space_m.png" id="15_gj01n"]
+[ext_resource type="Texture2D" uid="uid://hp6p7jw53qb5" path="res://assets/guis/spave_r.png" id="16_qipq4"]
+[ext_resource type="Texture2D" uid="uid://ckqt48jl6xltu" path="res://assets/guis/u_arrow_key.png" id="17_1oij3"]
+[ext_resource type="Texture2D" uid="uid://bc1ltcgv6y51b" path="res://assets/guis/ctrl_l.png" id="18_0cw00"]
+[ext_resource type="Texture2D" uid="uid://b0jpd6j5vb1b2" path="res://assets/guis/ctrl_r.png" id="19_xnmfx"]
+[ext_resource type="Texture2D" uid="uid://8jh5ph8p8spt" path="res://assets/guis/a_button.png" id="20_tvy8f"]
+[ext_resource type="Texture2D" uid="uid://coal7b7lya7yt" path="res://assets/guis/s_key.png" id="21_1hixs"]
+[ext_resource type="Texture2D" uid="uid://63tek1bmhqe4" path="res://assets/guis/d_arrow_key.png" id="22_tv2bo"]
+[ext_resource type="Texture2D" uid="uid://1ko7eshv4nvd" path="res://assets/guis/b_button.png" id="23_puril"]
+[ext_resource type="Texture2D" uid="uid://otd5ss3iqlad" path="res://assets/guis/back_normal.png" id="24_x5epr"]
+[ext_resource type="Texture2D" uid="uid://buroqr0pth2f2" path="res://assets/guis/back_hover.png" id="25_qywfq"]
+
+[node name="ControlsScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ubnx3")
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="ColorRect" parent="Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Border" type="TextureRect" parent="Controls"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ig288")
+
+[node name="ControlsText" type="CenterContainer" parent="Controls"]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/ControlsText"]
+layout_mode = 2
+theme_override_constants/separation = 56
+
+[node name="Heading" type="Label" parent="Controls/ControlsText/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+label_settings = ExtResource("2_x7317")
+horizontal_alignment = 1
+
+[node name="Run_Jump" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+
+[node name="RunContainer" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Run" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer"]
+layout_mode = 2
+text = "Run"
+label_settings = ExtResource("3_rkc60")
+horizontal_alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P1" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player1"]
+layout_mode = 2
+text = "Player One: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="AKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player1"]
+layout_mode = 2
+texture = ExtResource("5_5sw5x")
+expand_mode = 2
+
+[node name="DKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player1"]
+layout_mode = 2
+texture = ExtResource("6_v6l2i")
+expand_mode = 2
+
+[node name="Player2" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P2" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player2"]
+layout_mode = 2
+text = "Player Two: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="LArrowKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player2"]
+layout_mode = 2
+texture = ExtResource("7_2xrqo")
+expand_mode = 2
+
+[node name="RArrowKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Player2"]
+layout_mode = 2
+texture = ExtResource("8_muc0a")
+expand_mode = 2
+
+[node name="Controller" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controller" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+text = "Controller: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="LStickL" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("9_8prqn")
+expand_mode = 2
+
+[node name="LStickR" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("10_n7nmf")
+expand_mode = 2
+
+[node name="or" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+text = " or "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="DPadL" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("11_vkmn6")
+expand_mode = 2
+
+[node name="DPadR" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/RunContainer/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("12_uxk3q")
+expand_mode = 2
+
+[node name="JumpContainer" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Jump" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer"]
+layout_mode = 2
+text = "Jump"
+label_settings = ExtResource("3_rkc60")
+horizontal_alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P1" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1"]
+layout_mode = 2
+text = "Player One: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="WKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1"]
+layout_mode = 2
+texture = ExtResource("13_dlp4f")
+expand_mode = 2
+
+[node name="or" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1"]
+layout_mode = 2
+text = "/"
+label_settings = ExtResource("4_xh7ex")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Space1" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_iqaeq")
+expand_mode = 2
+
+[node name="Space2" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_gj01n")
+expand_mode = 2
+
+[node name="Space3" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player1/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("16_qipq4")
+expand_mode = 2
+
+[node name="Player2" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="P2" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2"]
+layout_mode = 2
+text = "Player Two: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="UArrowKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2"]
+layout_mode = 2
+texture = ExtResource("17_1oij3")
+expand_mode = 2
+
+[node name="or" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2"]
+layout_mode = 2
+text = "/"
+label_settings = ExtResource("4_xh7ex")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Ctrl1" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("18_0cw00")
+expand_mode = 2
+
+[node name="Ctrl2" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Player2/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("19_xnmfx")
+expand_mode = 2
+
+[node name="Controller" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controller" type="Label" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Controller"]
+layout_mode = 2
+text = "Controller: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="AButton" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Run_Jump/JumpContainer/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("20_tvy8f")
+expand_mode = 2
+
+[node name="Platform" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/ControlsText/VBoxContainer/Platform"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Platform" type="Label" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer"]
+layout_mode = 2
+text = "Turn into Platform"
+label_settings = ExtResource("3_rkc60")
+horizontal_alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer"]
+layout_mode = 2
+
+[node name="P1" type="Label" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Player1"]
+layout_mode = 2
+text = "Player One: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="SKey" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Player1"]
+layout_mode = 2
+texture = ExtResource("21_1hixs")
+expand_mode = 2
+
+[node name="Player2" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer"]
+layout_mode = 2
+
+[node name="P2" type="Label" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Player2"]
+layout_mode = 2
+text = "Player Two: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="DownArrow" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Player2"]
+layout_mode = 2
+texture = ExtResource("22_tv2bo")
+expand_mode = 2
+
+[node name="Controller" type="HBoxContainer" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer"]
+layout_mode = 2
+
+[node name="Controller" type="Label" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Controller"]
+layout_mode = 2
+text = "Controller: "
+label_settings = ExtResource("4_xh7ex")
+
+[node name="BButton" type="TextureRect" parent="Controls/ControlsText/VBoxContainer/Platform/VBoxContainer/Controller"]
+layout_mode = 2
+texture = ExtResource("23_puril")
+expand_mode = 2
+
+[node name="BackButtonContainer" type="MarginContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -76.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 88
+theme_override_constants/margin_bottom = 80
+
+[node name="BackButton" type="TextureButton" parent="Controls/BackButtonContainer"]
+layout_mode = 2
+texture_normal = ExtResource("24_x5epr")
+texture_pressed = ExtResource("25_qywfq")
+texture_hover = ExtResource("25_qywfq")
+texture_focused = ExtResource("25_qywfq")
+
+[connection signal="pressed" from="Controls/BackButtonContainer/BackButton" to="." method="_on_back_button_pressed"]

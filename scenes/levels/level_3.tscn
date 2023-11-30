@@ -40,20 +40,22 @@ rotation = 1.5708
 gate_length = 160.0
 player_target = 2
 
-[node name="Player1" parent="." instance=ExtResource("5_8ridm")]
-position = Vector2(184, 840)
-collision_layer = 2
-collision_mask = 41177
-player_num = 1
-
-[node name="Player2" parent="." instance=ExtResource("5_8ridm")]
-position = Vector2(320, 840)
-collision_layer = 4
-collision_mask = 41017
-player_num = 2
-
 [node name="Player1Spawn" type="Marker2D" parent="."]
 position = Vector2(184, 744)
 
 [node name="Player2Spawn" type="Marker2D" parent="."]
 position = Vector2(320, 744)
+
+[node name="Player1" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("5_8ridm")]
+position = Vector2(184, 840)
+collision_layer = 2
+collision_mask = 41177
+player_num = 1
+respawn_marker = NodePath("../Player1Spawn")
+
+[node name="Player2" parent="." node_paths=PackedStringArray("respawn_marker") instance=ExtResource("5_8ridm")]
+position = Vector2(320, 840)
+collision_layer = 4
+collision_mask = 41017
+player_num = 2
+respawn_marker = NodePath("../Player2Spawn")

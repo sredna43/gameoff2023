@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyb46fejey8d8"]
+[gd_scene load_steps=19 format=3 uid="uid://dyb46fejey8d8"]
 
 [ext_resource type="Script" path="res://scenes/guis/scripts/pause_menu.gd" id="1_2suhq"]
 [ext_resource type="Texture2D" uid="uid://bk878ng0fe03k" path="res://assets/guis/options_background.png" id="1_cfojp"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://edahu1omsqjw" path="res://assets/guis/restart_hover.png" id="7_38wal"]
 [ext_resource type="Texture2D" uid="uid://bnu4a65qwfb8s" path="res://assets/guis/resume_normal.png" id="7_63em1"]
 [ext_resource type="Texture2D" uid="uid://cfexp0yvkbceq" path="res://assets/guis/resume_hover.png" id="8_gmyri"]
+[ext_resource type="Texture2D" uid="uid://qjp8b5bv26xf" path="res://assets/guis/controls_normal.png" id="9_wokbd"]
+[ext_resource type="Texture2D" uid="uid://dxd106g3bc0u0" path="res://assets/guis/controls_hover.png" id="10_47m3l"]
 [ext_resource type="Texture2D" uid="uid://b3qpef4dibhpq" path="res://assets/guis/confirm_background.png" id="10_uga4e"]
 [ext_resource type="Texture2D" uid="uid://otd5ss3iqlad" path="res://assets/guis/back_normal.png" id="11_78kwi"]
 [ext_resource type="Texture2D" uid="uid://buroqr0pth2f2" path="res://assets/guis/back_hover.png" id="12_ah5lm"]
@@ -29,19 +31,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -450.0
-offset_right = 350.0
-offset_bottom = 450.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 576
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 576
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu/MarginContainer2"]
+layout_mode = 2
 texture = ExtResource("1_cfojp")
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
@@ -81,6 +84,15 @@ layout_mode = 2
 texture_normal = ExtResource("3_yf1sy")
 texture_hover = ExtResource("4_tpbrb")
 texture_focused = ExtResource("4_tpbrb")
+
+[node name="Controls" type="TextureButton" parent="PauseMenu/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("9_wokbd")
+texture_pressed = ExtResource("10_47m3l")
+texture_hover = ExtResource("10_47m3l")
+texture_focused = ExtResource("10_47m3l")
 
 [node name="MainMenu" type="TextureButton" parent="PauseMenu/MarginContainer/Buttons"]
 layout_mode = 2
@@ -153,6 +165,7 @@ texture_focused = ExtResource("14_vuq02")
 [connection signal="pressed" from="PauseMenu/MarginContainer/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/Buttons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/Buttons/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="PauseMenu/MarginContainer/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Confirm/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Confirm/MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
