@@ -4,3 +4,6 @@
 
 [node name="MultitargetCamera" type="Camera2D"]
 script = ExtResource("1_mw2gx")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

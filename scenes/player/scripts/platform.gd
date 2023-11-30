@@ -1,6 +1,8 @@
 extends PlayerState
 
 func enter() -> void:
+	if (Globals.play_sounds):
+		player.platform_sound.play(0.0)
 	player.is_platform = true
 	player.collision_layer = player.player_num * 8
 	player.sprite.scale = Vector2(2, 2)

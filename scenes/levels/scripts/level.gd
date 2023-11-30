@@ -4,13 +4,13 @@ class_name Level
 signal won
 
 @export var next_level: String = "-1"
+@export var draw_camera: bool = false
 
 @onready var player1: Player = $Player1
 @onready var player2: Player = $Player2
 @onready var cam = $MultitargetCamera
 
 var has_won = false
-
 
 func _ready() -> void:
 	if (cam):
@@ -27,7 +27,14 @@ func _check_win_level():
 
 
 func _physics_process(_delta: float) -> void:
+	queue_redraw()
 	_check_win_level()
+
+
+func _draw():
+	if !draw_camera:
+		return
+	draw_circle(cam.position, 10, Color.CORAL)
 
 
 func restart() -> void:

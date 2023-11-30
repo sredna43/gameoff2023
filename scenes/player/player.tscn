@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6t1fmlc7s4og"]
+[gd_scene load_steps=25 format=3 uid="uid://b6t1fmlc7s4og"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_v0enf"]
 [ext_resource type="Texture2D" uid="uid://b75143mxb0g3o" path="res://assets/player/player.png" id="2_m3ikt"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://scenes/player/scripts/wall_jump.gd" id="9_nbart"]
 [ext_resource type="Script" path="res://scenes/player/scripts/in_goal.gd" id="10_sx5fv"]
 [ext_resource type="Script" path="res://scenes/player/scripts/dead.gd" id="11_wek0l"]
+[ext_resource type="AudioStream" uid="uid://b24h1spk81ihh" path="res://assets/sounds/player_jump.ogg" id="13_tca85"]
+[ext_resource type="AudioStream" uid="uid://bysva7eyi11pb" path="res://assets/sounds/player_platform.ogg" id="14_g50pe"]
+[ext_resource type="AudioStream" uid="uid://c7o4fsmg7scdf" path="res://assets/sounds/player_die.ogg" id="15_shjik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63cog"]
 
@@ -228,6 +231,18 @@ texture = ExtResource("2_m3ikt")
 [node name="ExpandIcon" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.129412)
 texture = ExtResource("3_lglxh")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_tca85")
+volume_db = 8.0
+
+[node name="Platform" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_g50pe")
+volume_db = 4.0
+
+[node name="Die" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_shjik")
+volume_db = 10.0
 
 [connection signal="body_entered" from="FloorDetector" to="." method="_on_floor_area_body_entered"]
 [connection signal="body_exited" from="FloorDetector" to="." method="_on_floor_area_body_exited"]

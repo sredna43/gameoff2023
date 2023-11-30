@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://jqpxcgo7u3dk"]
+[gd_scene load_steps=5 format=3 uid="uid://jqpxcgo7u3dk"]
 
 [ext_resource type="Script" path="res://scenes/objects/scripts/goal.gd" id="1_n8ipg"]
 [ext_resource type="Texture2D" uid="uid://dydb5ym1276kt" path="res://assets/objects/goal.png" id="2_0u3m5"]
+[ext_resource type="AudioStream" uid="uid://dhjtrcyjsmmln" path="res://assets/sounds/goal_entered.ogg" id="3_wdjxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oc58p"]
 size = Vector2(52.9412, 54.5454)
@@ -19,5 +20,9 @@ shape = SubResource("RectangleShape2D_oc58p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0u3m5")
+
+[node name="EnterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wdjxt")
+volume_db = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

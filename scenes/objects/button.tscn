@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ca3ykvqmarsvn"]
+[gd_scene load_steps=14 format=3 uid="uid://ca3ykvqmarsvn"]
 
 [ext_resource type="Script" path="res://scenes/objects/scripts/button.gd" id="1_4ahv1"]
 [ext_resource type="Texture2D" uid="uid://bfs0u80olqds1" path="res://assets/objects/button.png" id="2_6s1s8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://5traefe6oam7" path="res://assets/objects/p1_button_pressed.png" id="5_a70h2"]
 [ext_resource type="Texture2D" uid="uid://1w5iphv6n2j3" path="res://assets/objects/p2_button.png" id="6_hivp7"]
 [ext_resource type="Texture2D" uid="uid://ctxrdnwwxpr4v" path="res://assets/objects/p2_button_pressed.png" id="7_btfhw"]
+[ext_resource type="AudioStream" uid="uid://dbrbm742w5bc4" path="res://assets/sounds/button_pressed.ogg" id="8_4mwti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtu4b"]
 size = Vector2(88, 36)
@@ -77,6 +78,9 @@ shape = SubResource("RectangleShape2D_4j1xs")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fjkas")
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_4mwti")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

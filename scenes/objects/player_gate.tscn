@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dytd5g5foi3ka"]
+[gd_scene load_steps=11 format=3 uid="uid://dytd5g5foi3ka"]
 
 [ext_resource type="Texture2D" uid="uid://gd21x8o66r55" path="res://assets/objects/gate_emitter.png" id="1_3aqx6"]
 [ext_resource type="Script" path="res://scenes/objects/scripts/player_gate.gd" id="1_tggpc"]
 [ext_resource type="Texture2D" uid="uid://bn8msuitlp07w" path="res://assets/objects/player_gate.png" id="2_w5yjo"]
+[ext_resource type="AudioStream" uid="uid://jy4hbtlt2wi" path="res://assets/sounds/gate_hum.ogg" id="4_s5ayt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jf64y"]
 size = Vector2(200.006, 24.2424)
@@ -118,3 +119,9 @@ shape = SubResource("RectangleShape2D_rbnqa")
 libraries = {
 "": SubResource("AnimationLibrary_3867o")
 }
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s5ayt")
+volume_db = -10.0
+autoplay = true
+max_distance = 500.0

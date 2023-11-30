@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://o0ykgiwri573"]
+
+[ext_resource type="Script" path="res://scenes/utils/audio_player.gd" id="1_t0s54"]
+[ext_resource type="AudioStream" uid="uid://dqcs0yomd8e04" path="res://assets/sounds/button_focus.ogg" id="2_4uxyi"]
+[ext_resource type="AudioStream" uid="uid://c7nbs12n377bj" path="res://assets/sounds/ui_button_pressed.ogg" id="3_8l5sr"]
+[ext_resource type="AudioStream" uid="uid://d3g4lej5ar7mw" path="res://assets/sounds/Industrious Ferret.mp3" id="4_o31vj"]
+
+[node name="AudioPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_t0s54")
+
+[node name="ButtonFocus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4uxyi")
+volume_db = 8.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8l5sr")
+volume_db = 5.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o31vj")
+
+[node name="Won" type="AudioStreamPlayer" parent="."]

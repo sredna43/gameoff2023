@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cyovbvub1ctre"]
+
+[ext_resource type="FontFile" uid="uid://cm2736hy813yx" path="res://assets/guis/MesloLGS NF Bold.ttf" id="1_8ke3w"]
+
+[resource]
+font = ExtResource("1_8ke3w")
+font_size = 24

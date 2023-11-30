@@ -1,6 +1,8 @@
 extends PlayerState
 
 func enter() -> void:
+	if (Globals.play_sounds):
+		player.die_sound.play(0.0)
 	player.collision.disabled = true
 	player.velocity.y = -player.jump_strength
 	player.sprite.scale = Vector2(1, 1)

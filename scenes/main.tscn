@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8lpd6ckiunhu"]
+[gd_scene load_steps=13 format=3 uid="uid://8lpd6ckiunhu"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_43261"]
 [ext_resource type="PackedScene" uid="uid://bl1qohwo88hfc" path="res://scenes/guis/main_menu.tscn" id="2_5whs0"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dnmtht1dnkjq4" path="res://scenes/guis/options.tscn" id="4_dapb2"]
 [ext_resource type="PackedScene" uid="uid://camr2edmarv8v" path="res://scenes/guis/level_select.tscn" id="5_lciho"]
 [ext_resource type="PackedScene" uid="uid://y2mi2enqrtr2" path="res://scenes/guis/level_won.tscn" id="6_6agyl"]
+[ext_resource type="PackedScene" uid="uid://bkih2yv2r4ndd" path="res://scenes/guis/credits.tscn" id="8_m58ny"]
 
 [sub_resource type="Animation" id="Animation_uoe7v"]
 length = 0.001
@@ -126,6 +127,9 @@ visible = false
 [node name="ControlsScreen" parent="." instance=ExtResource("3_kplvs")]
 visible = false
 
+[node name="Credits" parent="." instance=ExtResource("8_m58ny")]
+visible = false
+
 [node name="Blackout" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Blackout"]
@@ -138,6 +142,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="show_controls" from="MainMenu" to="." method="_on_main_menu_show_controls"]
+[connection signal="show_credits" from="MainMenu" to="." method="_on_main_menu_show_credits"]
 [connection signal="show_options" from="MainMenu" to="." method="_on_main_menu_show_options"]
 [connection signal="start_game" from="MainMenu" to="." method="_on_main_menu_start_game"]
 [connection signal="quit_main_menu" from="PauseMenu" to="." method="_on_pause_menu_quit_main_menu"]
@@ -152,3 +157,4 @@ color = Color(0, 0, 0, 1)
 [connection signal="level_selected" from="LevelSelect" to="." method="_on_level_select_level_selected"]
 [connection signal="close_options" from="OptionsMenu" to="." method="_on_options_menu_close_options"]
 [connection signal="back_button_pressed" from="ControlsScreen" to="." method="_on_controls_screen_back_button_pressed"]
+[connection signal="back_button_pressed" from="Credits" to="." method="_on_credits_back_button_pressed"]

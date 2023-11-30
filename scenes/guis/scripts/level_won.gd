@@ -11,6 +11,11 @@ signal main_menu
 @onready var buttons = [next_level_button, level_select_button, main_menu_button]
 var on_button = 0
 
+func _ready() -> void:
+	next_level_button.grab_focus()
+	for button in buttons:
+		button.connect("focus_entered", _on_button_focused)
+
 
 func _process(_delta: float) -> void:
 	if (visible):
@@ -37,12 +42,19 @@ func _process(_delta: float) -> void:
 
 
 func _on_next_level_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("next_level")
 
 
 func _on_level_select_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("level_select")
 
 
 func _on_main_menu_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("main_menu")
+
+
+func _on_button_focused() -> void:
+	AudioPlayer.button_focus()

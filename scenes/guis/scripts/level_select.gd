@@ -62,13 +62,20 @@ func setup_level_buttons() -> void:
 	for level in levels:
 		new_button = LevelButtonInstance.instantiate()
 		new_button.connect("level_selected", _on_level_button_pressed)
+		new_button.connect("focus_entered", _on_button_focused)
 		new_button.level_number = level
 		button_container.add_child(new_button)
 
 
 func _on_level_button_pressed(selected_level: String) -> void:
+	AudioPlayer.button_press()
 	emit_signal("level_selected", selected_level)
 
 
 func _on_back_button_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("back_pressed")
+
+
+func _on_button_focused() -> void:
+	AudioPlayer.button_focus()

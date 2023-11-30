@@ -4,6 +4,7 @@ extends Area2D
 @export var player_target: int 
 
 @onready var sprite = $Sprite2D
+@onready var enter_sound = $EnterSound
 
 func _ready() -> void:
 	collision_mask = player_target * 2
@@ -19,4 +20,6 @@ func _set_color() -> void:
 
 func _on_body_entered(body):
 	if body is Player and body.player_num == player_target:
+		if (Globals.play_sounds):
+			enter_sound.play(0.0)
 		body.go_to_goal(position)

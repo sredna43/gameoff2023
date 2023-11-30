@@ -13,6 +13,7 @@ const SPRITE_LENGTH = 192
 @onready var static_body = $Gate/StaticBody2D
 @onready var collider = $Gate/StaticBody2D/CollisionShape2D
 @onready var animation_player = $AnimationPlayer
+@onready var sound_effect = $SoundEffect
 
 
 func _ready() -> void:
@@ -33,9 +34,13 @@ func _process(_delta: float) -> void:
 	emitter1.position.x = -(gate_length - 32) / 2 - 8
 	emitter2.position.x = (gate_length - 32) / 2 + 8
 	gate.scale.x = (gate_length - 32) / SPRITE_LENGTH
-	if (!gate.visible):
-		static_body.set_collision_layer_value(6, false)
-		static_body.set_collision_layer_value(7, false)
+	if (not Engine.is_editor_hint()):
+		if (!gate.visible):
+			sound_effect.stream_paused = true
+			static_body.set_collision_layer_value(6, false)
+			static_body.set_collision_layer_value(7, false)
+		elif (gate.visible and not sound_effect.playing):
+			sound_effect.stream_paused = false
 
 
 func disappear() -> void:

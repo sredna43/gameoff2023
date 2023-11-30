@@ -51,6 +51,9 @@ onready variables
 @onready var animation_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var collision = $CollisionShape2D
+@onready var jump_sound: AudioStreamPlayer2D = $Jump
+@onready var platform_sound: AudioStreamPlayer2D = $Platform
+@onready var die_sound: AudioStreamPlayer2D = $Die
 
 
 """

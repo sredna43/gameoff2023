@@ -18,11 +18,19 @@ signal quit_main_menu
 @onready var back_button = $Confirm/MarginContainer/HBoxContainer/Back
 @onready var quit_button = $Confirm/MarginContainer/HBoxContainer/Quit
 
+@onready var all_buttons = [resume_button, restart_button, options_button, controls_button, main_menu_button, back_button, quit_button]
+
 var buttons = []
 var on_button = 0
 
 enum screens {MAIN, CONFIRM, OTHER}
 var on_screen = screens.MAIN
+
+var just_opened = true
+
+func _ready() -> void:
+	for button in all_buttons:
+		button.connect("focus_entered", _on_button_focused)
 
 
 func _process(_delta: float) -> void:
@@ -62,37 +70,52 @@ func _process(_delta: float) -> void:
 				pause_menu.modulate = Color(1, 1, 1, 1)
 				confirm_menu.hide()
 			on_screen = screens.MAIN
-			
+		if (Input.is_action_just_released("pause")):
+			just_opened = false
+		if (Input.is_action_just_pressed("pause") and not just_opened):
+			_on_resume_pressed()
 
 
 func _on_resume_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	emit_signal("resume")
 	on_screen = screens.MAIN
 
 
 func _on_restart_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	emit_signal("restart")
 	on_screen = screens.MAIN
 
 
 func _on_options_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	emit_signal("show_options")
 	on_screen = screens.OTHER
 
 
 func _on_main_menu_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	confirm_menu.show()
 	pause_menu.modulate = Color(1, 1, 1, 0.2)
 	on_screen = screens.CONFIRM
 
 
 func _on_back_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	pause_menu.modulate = Color(1, 1, 1, 1)
 	confirm_menu.hide()
 	on_screen = screens.MAIN
 
 
 func _on_quit_pressed() -> void:
+	just_opened = true
+	AudioPlayer.button_press()
 	emit_signal("quit_main_menu")
 	pause_menu.modulate = Color(1, 1, 1, 1)
 	confirm_menu.hide()
@@ -101,5 +124,10 @@ func _on_quit_pressed() -> void:
 
 
 func _on_controls_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("show_controls")
 	on_screen = screens.OTHER
+
+
+func _on_button_focused() -> void:
+	AudioPlayer.button_focus()

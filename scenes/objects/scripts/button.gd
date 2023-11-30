@@ -10,6 +10,7 @@ signal pressed
 @onready var static_body = $StaticBody2D
 @onready var pressed_collision = $StaticBody2D/Pressed
 @onready var released_collision = $StaticBody2D/Released
+@onready var sound_effect = $SoundEffect
 
 var is_pressed = false
 
@@ -39,6 +40,8 @@ func _process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(_body):
 	if (not is_pressed):
+		if (Globals.play_sounds):
+			sound_effect.play(0.0)
 		emit_signal("pressed")
 	is_pressed = true
 	sprite.frame = player_target * 2 + 1

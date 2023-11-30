@@ -13,6 +13,11 @@ var sound_button: TextureButton
 
 var on_button = 0
 var buttons = []
+@onready var all_buttons = [music_off_button, music_on_button, sounds_off_button, sounds_on_button, accept_button]
+
+func _ready() -> void:
+	for button in all_buttons:
+		button.connect("focus_entered", _on_button_focused)
 
 func _process(_delta: float) -> void:
 	if (Globals.play_music):
@@ -57,12 +62,19 @@ func _process(_delta: float) -> void:
 
 
 func _on_accept_button_pressed() -> void:
+	AudioPlayer.button_press()
 	emit_signal("close_options")
 
 
 func _on_sound_effects_button_pressed() -> void:
 	Globals.play_sounds = !Globals.play_sounds
+	AudioPlayer.button_press()
 
 
 func _on_music_button_pressed() -> void:
 	Globals.play_music = !Globals.play_music
+	AudioPlayer.button_press()
+
+
+func _on_button_focused() -> void:
+	AudioPlayer.button_focus()

@@ -8,6 +8,7 @@ extends Node2D
 @onready var respawn_marker = $RespawnMarker
 @onready var animation_player = $AnimationPlayer
 @onready var area = $Area2D
+@onready var sound_effect = $SoundEffect
 
 var has_been_reached = false
 
@@ -27,6 +28,8 @@ func _process(_delta: float) -> void:
 
 
 func _reached(player: Player) -> void:
+	if (Globals.play_sounds):
+		sound_effect.play(0.0)
 	player.respawn_position = respawn_marker.global_position
 	animation_player.play("reached")
 	has_been_reached = true

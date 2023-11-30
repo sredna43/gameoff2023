@@ -17,12 +17,14 @@ const levels: Dictionary = {
 
 @onready var animation_player = $AnimationPlayer
 @onready var blackout = $Blackout
+
 @onready var main_menu = $MainMenu
 @onready var controls_screen = $ControlsScreen
 @onready var options_menu = $OptionsMenu
 @onready var pause_menu = $PauseMenu
 @onready var level_select = $LevelSelect
 @onready var level_won = $LevelWon
+@onready var credits_screen = $Credits
 
 var current_level: Level
 var next_level: Level
@@ -44,6 +46,7 @@ var base_ui = UI.MAIN
 func _ready() -> void:
 	if (OS.is_debug_build()):
 		unlocked_levels = levels.keys()
+	AudioPlayer.start_music()
 	_setup_selectable_levels()
 
 
@@ -97,6 +100,9 @@ func _on_main_menu_show_controls() -> void:
 
 func _on_main_menu_show_options() -> void:
 	options_menu.show()
+
+func _on_main_menu_show_credits() -> void:
+	credits_screen.show()
 
 
 func _on_pause_menu_resume() -> void:
@@ -208,6 +214,14 @@ func _on_level_select_back_pressed() -> void:
 
 func _on_controls_screen_back_button_pressed() -> void:
 	controls_screen.hide()
+	if (base_ui == UI.MAIN):
+		main_menu.on_screen = main_menu.screens.MAIN_MENU
+	elif (base_ui == UI.PAUSE):
+		pause_menu.on_screen = pause_menu.screens.MAIN
+
+
+func _on_credits_back_button_pressed() -> void:
+	credits_screen.hide()
 	if (base_ui == UI.MAIN):
 		main_menu.on_screen = main_menu.screens.MAIN_MENU
 	elif (base_ui == UI.PAUSE):
