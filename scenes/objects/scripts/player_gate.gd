@@ -40,7 +40,10 @@ func _process(_delta: float) -> void:
 			static_body.set_collision_layer_value(6, false)
 			static_body.set_collision_layer_value(7, false)
 		elif (gate.visible and not sound_effect.playing):
-			sound_effect.stream_paused = false
+			if (Globals.play_sounds):
+				sound_effect.stream_paused = false
+			else:
+				sound_effect.stream_paused = true
 
 
 func disappear() -> void:
